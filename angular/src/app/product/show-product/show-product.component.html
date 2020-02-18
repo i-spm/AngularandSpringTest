@@ -1,0 +1,31 @@
+<div class="container">
+    <h2>List of Products</h2>
+    <app-search-product></app-search-product>
+    <div class="table-responsive">
+      <div *ngIf="products?.length===0">
+        No Products Available
+      </div>          
+    <table class="table" *ngIf="products?.length!==0">
+      <thead>
+        <tr>
+      
+          <th>Product Name</th>
+          <th>Description of Product</th>
+          <th>Price</th>
+          <th>Discount</th>
+          <th>Expiry Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+
+          <td>{{product.productName}}</td>
+          <td>{{product.productdesc}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.discount}}</td>
+          <td>{{product.dateOfExpiry}}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>

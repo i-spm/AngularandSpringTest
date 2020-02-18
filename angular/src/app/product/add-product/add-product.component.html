@@ -1,0 +1,72 @@
+<div class="container mt-5 mb-5 ">
+    <div class="row">
+        <div class="col-12">
+            <h2>Add Products</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="alert alert-success" *ngIf="isSubmitted">
+            Product Added Successfully
+        </div>
+    </div>
+
+    <form [formGroup]="addForm" (submit)="onSubmitForm()" *ngIf="!isSubmitted">
+        <div class="row">
+            <div class="col-9">
+                <div class="form-group">
+                    <label for="productName">Product Name</label>
+                    <input type="text" name="product" id="productName" class="form-control"
+                        formControlName="productName">
+                    <span class="validation-error"
+                        *ngIf="addForm.get('productName').hasError('required') && addForm.get('productName').touched">Product
+                        Name cannot be empty</span>
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="form-group">
+                    <label for="productdesc">Product Description</label>
+                    <input type="text" name="productdesc" id="productdesc" class="form-control"
+                        formControlName="productdesc">
+                    <span class="validation-error"
+                        *ngIf="addForm.get('productdesc').hasError('required') && addForm.get('productdesc').touched">Product
+                        Description cannot be empty</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-9 col-md-3">
+                <label for="price">Price</label>
+                <input type="text" name="price" id="price" class="form-control" formControlName="price">
+                <span class="validation-error"
+                    *ngIf="addForm.get('price').hasError('required') && addForm.get('price').touched">Price cannot be
+                    empty</span>
+                <span class="validation-error" *ngIf="addForm.get('price').hasError('pattern')">Price contains only
+                    numeric value</span>
+            </div>
+            <div class="form-group col-9 col-md-3">
+                <label for="discount">Discount(%)</label>
+                <input type="text" name="discount" id="discount" class="form-control" formControlName="discount">
+                <span class="validation-error"
+                    *ngIf="addForm.get('discount').hasError('required') && addForm.get('discount').touched">Discount
+                    cannot be
+                    empty</span>
+                <span class="validation-error" *ngIf="addForm.get('discount').hasError('pattern')">Discount contains
+                    only
+                    numeric value</span>
+                    <span class="validation-error" *ngIf="addForm.get('discount').hasError('min') || addForm.get('discount').hasError('max')">Discount should be between 0 to 100 percent
+                     </span>
+            </div>
+            <div class="form-group col-9 col-md-3">
+                <label for="dateOfExpiry">Expiry Date </label>
+                <input type="date" name="dateOfExpiry" id="dateOfExpiry" class="form-control"
+                    formControlName="dateOfExpiry">
+                <span class="validation-error"
+                    *ngIf="addForm.get('dateOfExpiry').hasError('required') && addForm.get('dateOfExpiry').touched">Expiry Date
+                    cannot be
+                    empty</span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="addForm.invalid">Save</button>
+    </form>
+</div>
