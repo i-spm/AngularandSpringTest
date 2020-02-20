@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { SearchProductComponent } from './product/search-product/search-product.component';
 import { ProductServiceService } from './service/product-service.service';
 import { AddProductComponent } from './product/add-product/add-product.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { AddProductComponent } from './product/add-product/add-product.component
 HttpClientModule  
 
   ],
-  providers: [ProductServiceService],
+  providers: [ProductServiceService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

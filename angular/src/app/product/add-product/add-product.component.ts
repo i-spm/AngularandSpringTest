@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductServiceService } from 'src/app/service/product-service.service';
 import {Product} from 'src/app/model/product.model';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-add-product',
@@ -11,8 +12,10 @@ import {Product} from 'src/app/model/product.model';
 export class AddProductComponent implements OnInit {
 isSubmitted: boolean;
 addForm:FormGroup;
+todaysDate:string;
+date:Date;
 product:Product;
-  constructor(private service:ProductServiceService) { }
+  constructor(private service:ProductServiceService ,private datePipe: DatePipe) { }
 
   ngOnInit(): void {
     this.addForm = new FormGroup({
@@ -22,6 +25,17 @@ product:Product;
       'discount': new FormControl(null, [Validators.required, Validators.pattern('^[0-9]+$'),Validators.max(100),Validators.min(0)]),
       'dateOfExpiry': new FormControl(null, [Validators.required])
     });
+
+    
+
+    this.todaysDate = this.datePipe.transform(new Date(),'yyyy-MM-dd');
+
+    
+
+    
+    
+
+
 
   }
   onSubmitForm(){

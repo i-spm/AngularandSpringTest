@@ -7,9 +7,10 @@ import { AddProductComponent } from './product/add-product/add-product.component
 
 
 const routes: Routes = [
-  {path: "home" , component:HomeComponent},
+  {path: '' , component:ShowProductComponent},
   {path: "show-product", component:ShowProductComponent },
-  {path: "add-product" , component:AddProductComponent}
+  {path: "add-product" , component:AddProductComponent},
+  {path:"**", component:ShowProductComponent}
 ];
 
 @NgModule({

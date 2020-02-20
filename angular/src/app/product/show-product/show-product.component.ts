@@ -19,15 +19,18 @@ this.products=[...data];
 this.originalList=this.products;
 console.log(this.products);
     });
+
+    this.service.filter.subscribe((obj: { title: string }) => {
+      if (obj.title !== '') {
+        const result = this.originalList.filter(prod => prod.productName.toLowerCase().includes(obj.title.toLowerCase()));
+        this.products = result ? result : [];
+      } else {
+        this.products = [...this.originalList];
+      }
+    });
   }
 
- /*  this.service.filter.subscribe((obj: { title: string }) => {
-    if (obj.title !== '') {
-      const result = this.originalList.filter(prod => prod.productName.toLowerCase().includes(obj.title.toLowerCase()));
-      this.products = result ? result : [];
-    } else {
-      this.products = [...this.originalList];
-    }
-  }); */
+ /*   */
 
+  
 }

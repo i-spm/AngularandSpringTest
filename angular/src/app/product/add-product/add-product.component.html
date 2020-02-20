@@ -1,5 +1,5 @@
 <div class="container mt-5 mb-5 ">
-    <div class="row">
+    <div class="row  justify-content-center">
         <div class="col-12">
             <h2>Add Products</h2>
         </div>
@@ -59,7 +59,7 @@
             <div class="form-group col-9 col-md-3">
                 <label for="dateOfExpiry">Expiry Date </label>
                 <input type="date" name="dateOfExpiry" id="dateOfExpiry" class="form-control"
-                    formControlName="dateOfExpiry">
+                    formControlName="dateOfExpiry" [min]="todaysDate">
                 <span class="validation-error"
                     *ngIf="addForm.get('dateOfExpiry').hasError('required') && addForm.get('dateOfExpiry').touched">Expiry Date
                     cannot be

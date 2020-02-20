@@ -1,7 +1,9 @@
 <div class="container">
-    <h2>List of Products</h2>
+
     <app-search-product></app-search-product>
+    <h2>List of Products</h2>
     <div class="table-responsive">
+      
       <div *ngIf="products?.length===0">
         No Products Available
       </div>          
