@@ -2,20 +2,34 @@ package com.example.angularTest.entity;
 
 import java.util.Date;
 
-//import javax.persistence.Entity;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-//@Entity
+@Entity
+@Table(name="product")
 public class Product {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="pr_id")
 	private int id; 
+	@Column(name="pr_name")
 	private String productName;
+	@Column(name="pr_desc")
 	private String productdesc;
+	@Column(name="pr_price")
 	private double price;
+	@Column(name="pr_discount")
 	private double discount;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", locale = "pt-BR", timezone = "IST")
+	@Column(name="pr_expiry")
 	private Date dateOfExpiry;
 	
 	
